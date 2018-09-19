@@ -21,23 +21,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <@head title="${tag.tagTitle} - ${blogTitle}">
-        <meta name="keywords" content="${metaKeywords},${tag.tagTitle}"/>
+        <@head title="${archiveDate.archiveDateMonth} ${archiveDate.archiveDateYear} (${archiveDate.archiveDatePublishedArticleCount}) - ${blogTitle}">
+        <meta name="keywords" content="${metaKeywords},${archiveDate.archiveDateYear}${archiveDate.archiveDateMonth}"/>
         <meta name="description" content="<#list articles as article>${article.articleTitle}<#if article_has_next>,</#if></#list>"/>
         </@head>
     </head>
-    <body class="classic-wptouch-bg ">
-        <#include "header.ftl">
-		<div class="content single">
-            <div class="post">
-                <h2 >${tag1Label}
-                    <a rel="alternate" href=""><span id="tagArticlesTag">
-                        ${tag.tagTitle}
-                    </span>(${tag.tagPublishedRefCount})</a>
-                </h2>
-        	</div>
-        </div>
-        <#include "article-list.ftl">
-        <#include "footer.ftl">
+    <body>
+        <#include "side.ftl">
+        <main>
+            <h2 class="classify-name">
+                ${archive1Label}
+                <#if "en" == localeString?substring(0, 2)>
+                ${archiveDate.archiveDateMonth} ${archiveDate.archiveDateYear} (${archiveDate.archiveDatePublishedArticleCount})
+                <#else>
+                ${archiveDate.archiveDateYear} ${yearLabel} ${archiveDate.archiveDateMonth} ${monthLabel} (${archiveDate.archiveDatePublishedArticleCount})
+                </#if>
+            </h2>
+            <#include "article-list.ftl">
+            <#include "footer.ftl">
+        </main>
+
     </body>
 </html>

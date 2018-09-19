@@ -128,7 +128,7 @@ public final class Starter {
 
         String portArg = commandLine.getOptionValue("listen_port");
         if (!Strings.isNumeric(portArg)) {
-            portArg = "8080";
+            portArg = "80";
         }
 
         String serverScheme = commandLine.getOptionValue("server_scheme");

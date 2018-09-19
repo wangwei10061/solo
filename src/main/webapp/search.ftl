@@ -31,7 +31,7 @@
 </head>
 <body>
 <div class="search__header fn-clear">
-    <a href="${servePath}"><img class="fn-left" width="44" border="0" alt="Solo" title="Solo" src="${staticServePath}/images/logo.png"/></a>
+    <a href="${servePath}" target="_parent"><img class="fn-left" width="44" border="0" alt="Solo" title="Solo" src="${staticServePath}/images/logo.png"/></a>
     <div class="search__input fn-left">
         <input value="${keyword}" id="keyword" onkeypress="if(event.keyCode===13){document.getElementById('searchBtn').click()}">
         <button id="searchBtn" onclick="window.location.href='${servePath}/search?keyword=' + document.getElementById('keyword').value">搜索</button>
@@ -44,7 +44,7 @@
         <a href="${loginURL}">${loginLabel}</a>
         &nbsp;   <a href="${servePath}/register">${registerLabel}</a>
     </#if>
-        </span>
+    </span>
 </div>
 
 <div class="search">
@@ -53,27 +53,27 @@
         <article>
             <header>
                 <h1>
-                    <a rel="bookmark" href="${servePath}${article.articlePermalink}">
-                    ${article.articleTitle}
+                    <a rel="bookmark" href="${servePath}${article.articlePermalink}" target="_parent" >
+                        ${article.articleTitle}
                     </a>
                 </h1>
 
                 <div class="meta">
                     <time>
-                    ${article.articleCreateDate?string("yyyy-MM-dd")}
+                        ${article.articleCreateDate?string("yyyy-MM-dd")}
                     </time>
                     &nbsp;
-                ${article.articleCommentCount} ${commentLabel}
+                    ${article.articleCommentCount} ${commentLabel}
                     &nbsp;
-                ${article.articleViewCount} ${viewLabel}
+                    ${article.articleViewCount} ${viewLabel}
                 </div>
             </header>
             <div class="content-reset">
-            ${article.articleAbstract}
+                ${article.articleAbstract}
             </div>
             <footer>
                 <#list article.articleTags?split(",") as articleTag>
-                    <a class="tag" rel="tag" href="${servePath}/tags/${articleTag?url('UTF-8')}">${articleTag}</a>
+                    <a class="tag" rel="tag" href="${servePath}/tags/${articleTag?url('UTF-8')}" target="_parent">${articleTag}</a>
                     <#if articleTag_has_next> · ‎</#if>
                 </#list>
             </footer>
@@ -102,13 +102,13 @@
         </#if>
     </nav>
 <#else>
-No Result, Return to <a href="${servePath}">Index</a> or <a href="https://hacpai.com">HacPai</a>.
+No Result, Return to <a href="${servePath}" target="_parent">Index</a> or <a href="https://hacpai.com" target="_parent">HacPai</a>.
 </#if>
 </div>
 
 <div class="footerWrapper">
     <div class="footer">
-        Powered by <a href="https://b3log.org" target="_blank">B3log 开源</a> • Solo ${version}
+        Powered by <a href="https://b3log.org" target="_parent">B3log 开源</a> • Solo ${version}
     </div>
 </div>
 </body>
